@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
+import {url} from 'react-native-dotenv'
 
 export default function App() {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [refNo, setRefNo] = useState('');
   const [isSearched,setSearch] = useState(false);
-  const baseUrl = 'http://41.89.227.241:8182/api/Ecitizen/paymentstatus?ref_no=';
+  const baseUrl = url;
 
   const fetchPaymentStatus = () => {
     if (!refNo) {
@@ -95,7 +96,13 @@ export default function App() {
         <Text>Loading...</Text>
       ) : data ? (
         <View>
-         
+          <Text>Status: {data.status}</Text>
+          <Text>Ref No: {data.ref_no}</Text>
+          <Text>Name: {data.name}</Text>
+          <Text>Currency: {data.currency}</Text>
+          <Text>Client Invoice Ref: {data.client_invoice_ref}</Text>
+          <Text>Amount Paid: {data.amount_paid}</Text>
+          <Text>Amount Expected: {data.amount_expected}</Text>
 
         </View>
       ) : (
