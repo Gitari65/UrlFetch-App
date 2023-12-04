@@ -1,13 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
-import {url} from 'react-native-dotenv'
+import {MAIN_URL,STATUS_URL} from 'react-native-dotenv'
 
 export default function App() {
   const [data, setData] = useState(null);
+  const[statusData,setStatusData]=useState(null);
   const [isLoading, setLoading] = useState(false);
   const [refNo, setRefNo] = useState('');
   const [isSearched,setSearch] = useState(false);
-  const baseUrl = url;
+  const baseUrl = MAIN_URL;
+  const statusUrl = STATUS_URL;
+
+  // const fetchRefStatus=()=>{
+  //   if (!refNo) {
+  //     alert('Please enter a reference number.');
+  //     return;
+  //   }
+  //   const url = statusUrl + refNo;
+  
+  //   setLoading(true);
+  //   const requestStatusOptions={
+  //     method:'GET',
+  //     headers:{'Content-Type':'application/json'},
+  //   }
+  //   fetch(url,requestStatusOptions)
+  //   .then((response)=>{
+  //     if(!response.ok){
+  //       setLoading(false);
+  //       setStatusData(null);
+  //       return response.text();
+  //     }
+  //     return response.text();
+  //   }).then((text)=>{
+  //     try{
+  //       const json = JSON.parse(text);
+  //       console.log('API Response:', json);
+  //       setStatusData(json);
+  //     }catch(error){
+  //       alert('Reference number not found or invalid response.');
+  //       setStatusData(null);
+  //     }
+  //   })
+
+
+  // }
+
+
 
   const fetchPaymentStatus = () => {
     if (!refNo) {
