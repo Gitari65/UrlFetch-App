@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
-import {MAIN_URL,STATUS_URL} from 'react-native-dotenv'
+import Config from 'react-native-config';
 
-export default function App() {
+
+ function App() {
   const [data, setData] = useState(null);
   const[statusData,setStatusData]=useState(null);
   const [isLoading, setLoading] = useState(false);
   const [refNo, setRefNo] = useState('');
   const [isSearched,setSearch] = useState(false);
-  const baseUrl = MAIN_URL;
-  const statusUrl = STATUS_URL;
+  const baseUrl =Config.MAIN_URL;
+  const statusUrl = Config.STATUS_URL;
 
   // const fetchRefStatus=()=>{
   //   if (!refNo) {
@@ -152,6 +153,7 @@ export default function App() {
 
       
 }
+module.exports = {App};
 
 
 
